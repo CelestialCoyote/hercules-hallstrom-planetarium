@@ -1,0 +1,19 @@
+{
+  "name": "hallstrom_24Jan22_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon ./src/app.js"
+  },
+  "author": "Paul Stearns",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "chalk": "^4.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

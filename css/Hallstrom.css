@@ -1,0 +1,859 @@
+/* Updated 24Jan22. */
+
+/**************************************************************************************************
+*
+* NavBar and all Tabs.
+*
+**************************************************************************************************/
+
+
+/*************
+* Document items.
+*************/
+
+html {
+    height: 100vh;                              /* Use 100% of viewport height. */
+    position: fixed;                            /* Should keep GUI from shifting around on tablet. */
+    width: 100vw;                               /* Use 100% of viewport width. */
+}
+
+body {
+    background-color: black;                    /* Set background color. */
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif;    /* Set font family options. */
+}
+
+#all-tabs {
+    height: 76vh;                               /* Use 76% of viewport height. */
+    margin: 0px;                                /* Set space around element border to 0. */
+    padding: 0px;                               /* Set space between element border and content to 0. */
+}
+
+.tab-gui {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    height: 76vh;                               /* Use 76% of viewport height. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+    margin: 0px;                                /* Set space around element border. */
+    padding: 0px;                               /* Set space between element border and content. */
+}
+
+
+/*************
+* Bootstrap Nav-Tab overrides.
+*************/
+
+.navbar .navbar-brand {
+    color: darkorange;                          /* Set color. */
+    margin-right: 0.5em;                        /* Set space around element right border. */
+}
+
+.navbar .navbar-nav .nav-item {
+    text-align: center;                         /* Set text horizontal alignment to center. */
+    width: 5.0em;                               /* Set width in containing block. */
+}
+
+.navbar .navbar-nav .nav-item .active {
+    border: 2px solid lightgreen;               /* Set border width, style, and color. */
+    color: lightgreen;                          /* Set color. */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: darkgreen;                           /* Set color. */
+}
+
+.navbar .navbar-nav .nav-link {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    color: crimson;                             /* Set color. */
+}
+
+#navigation {
+    justify-content: space-between;             /* Set horizontal alignment of items in element. */
+}
+
+
+/*************
+* Common items.
+*************/
+
+.labelText,
+.controlText,
+.controlTextLarge {
+    text-align: center;                         /* Set text horizontal alignment to center. */
+    margin: 0px;                                /* Set space around element border. */
+    padding: 0px;                               /* Set space between element border and content. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+.labelText {
+    color: red;                                 /* Set color. */
+    margin-bottom: 0.5em;                          /* Set space around element top border. */
+    margin-top: .75em;                          /* Set space around element top border. */
+}
+
+.controlTextLarge {
+    color: darkorange;                          /* Set color. */
+    font-size: 1.0em;                           /* Set font size. */
+}
+
+.controlText {
+    color: darkorange;                          /* Set color. */
+    font-size: 0.8em;                           /* Set font size. */
+    
+}    
+
+.guiButton {
+    background-color: black;                    /* Set background color. */
+    border: 2px solid red;                      /* Set border width, style, and color. */
+    border-radius: 0.75em;                      /* Set border corner radius. */
+    color: darkorange;                          /* Set color. */
+    height: 2.0em;                              /* Set height in containing block. */
+    margin: 0.5em;                              /* Set space around element border. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+.guiButton:focus {
+    outline: none;                              /* No outline when selected. */
+}
+
+.buttonSpacer {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+    height: 100%;                               /* Set height to 100% of container. */
+}
+
+.coveButtonPair {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    justify-content: space-between;             /* Set horizontal alignment of items in element. */
+}
+
+
+/*************
+* Auto/ Man buttons.
+*************/
+
+#autoManGroup {
+    display: flex;                              /* Set element as a block container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+}
+
+#autoManControl {
+    margin-left: 2.0em;
+}
+
+
+/*************
+* Vertical jQuery sliders common elements.
+*************/
+
+.verticalSlider {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height in containing block. */
+}
+
+.v-slider.ui-slider {
+    background-color: black;                    /* Set background color. */
+    border: 1px solid orange;                   /* Set border width, style, and color. */
+    border-radius: 0.25em;                      /* Set border corner radius. */
+    height: 100%;                               /* Set height in containing block. */
+    margin: 1.0em;                              /* Set space around element border. Stops slider from shaking when moving. */
+    outline: none;                              /* No outline when selected. */
+}
+
+.v-slider .ui-slider-handle {
+    background-color: black;                    /* Set background color. */
+    border: 1px solid orange;                   /* Set border width, style, and color. */
+    border-radius: 0.5em;                       /* Set border corner radius. */
+    cursor: pointer;                            /* Set the type of mouse cursor. */
+    height: 2.0em;                              /* Set height in containing block. Sets handle height. */
+    left: 50%;                                  /* Set the left edge of element from the left edge of its nearest positioned ancestor. Aligns slider handle to the left. */
+    margin-left: -1.5em;                        /* Set space around element left border. Should be minus half handle width to center handle left and right. */
+    margin-bottom: -1.0em;                      /* Set space around element bottom border. Should be minus half handle height to keep from running past top end. */
+    outline: none;                              /* No outline when selected. */
+    width: 3.0em;                               /* Set width in containing block. Sets handle width. */
+}
+
+.v-slider .ui-slider-range {
+    background-color: black;                    /* Set background color. */
+}
+
+
+/****************************
+*  Radio buttons.
+*  RGB & White strobe effects
+*  Moon Phase Control
+****************************/
+
+input[type="radio"] {
+    display: none;                              /* Set element as a block container. Hides standard round radio button. */
+}
+
+input[type="radio"] + label {
+    border: 2px solid red;                      /* Set border width, style, and color. */
+    border-radius: 0.5em;                       /* Set border corner radius. */
+    color: red;                                 /* Set color. */
+    margin-left: 0.25em;                        /* Set space around element left border. */
+    margin-right: 0.25em;                       /* Set space around element right border. */
+    padding: 0.25em;                            /* Set space between element border and content. */
+    text-align: center;                         /* Set text horizontal alignment to center. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+input[type="radio"]:checked + label {
+    color: green;                               /* Set color. */
+    border: 2px solid green;                    /* Set border width, style, and color. */
+}
+
+
+/*************
+*  Toggle switches for lamps and shutters.
+*************/
+
+.toggleCheckbox {
+    display: none;                              /* Hides standard checkbox. */
+}
+
+.toggleLamp,
+.toggleShutter {
+    padding: 0.5em;                             /* Set space between element border and content. */
+    position: relative;                         /* Set element positioning method. */
+    width: 6.0em;                               /* Set width in containing block. */
+}
+
+.toggleLampLabel,
+.toggleShutterLabel {
+    border: 2px solid red;                      /* Set border width, style, and color. */
+    border-radius:  2.5em;                      /* Set border corner radius. */
+    cursor: pointer;                            /* Set the type of mouse cursor. */
+    display: block;                             /* Set element as a block container. */
+    overflow: hidden;                           /* Clip/ hide content outside container. */
+}
+
+.toggleAutoManInner,
+.toggleLampInner,
+.toggleShutterInner {
+    display: block;                             /* Set element as a block container. */
+    margin-left: -100%;                         /* Set space around element left border. */
+    transition: margin 0.3s ease-in 0s;         /* Transition the margin smoothly. */
+    width:  200%;                               /* Set width in containing block. */
+}
+
+.toggleAutoManInner:before,
+.toggleAutoManInner:after,
+.toggleLampInner:before,
+.toggleLampInner:after,
+.toggleShutterInner:before,
+.toggleShutterInner:after {
+    box-sizing: border-box;                     /* Set padding and border in element's overall width and height. */
+    display: block;                             /* Set element as a block container. */
+    float: left;                                /* Float element to left of container. */
+    font-size: 0.8em;                           /* Sets font size inside toggle switch. */
+    font-weight: bold;                          /* Set font weight. */
+    height: 2.0em;                              /* Sets overall height of toggle switch. */
+    line-height: 2.0em;                         /* Set line height inside toggle switch. */
+    padding: 0.0em;                             /* Set space between element border and content. */
+    width: 50%;                                 /* Set width in containing block. */
+}
+
+.toggleAutoManInner:before,
+.toggleLampInner:before,
+.toggleShutterInner:before {
+    background-color: black;                    /* Set background color. */
+    color: green;                               /* Set color. */
+    padding-left: 0.5em;                        /* Sets horizontal position of text inside of toggle switch. */
+}
+
+.toggleAutoManInner:before {
+    content: "AUTO";                            /* Sets text when switch is "AUTO". */
+}
+
+.toggleLampInner:before {
+    content: "ON";                              /* Sets text when switch is "ON". */
+}
+
+.toggleShutterInner:before {
+    content: "OPEN";                             /* Sets text when switch is "ON". */
+}
+
+.toggleAutoManInner:after,
+.toggleLampInner:after,
+.toggleShutterInner:after {
+    background-color: black;                    /* Sets background color. */
+    color: red;                                 /* Sets color. */
+    padding-right: 0.5em;                       /* Set space between element right border and content. */
+    text-align: right;                          /* Aligns text when switch is "OFF". */
+}
+
+.toggleAutoManInner:after {
+    content: "MAN";                             /* Sets text when switch is "MAN". */
+}
+
+.toggleLampInner:after {
+    content: "OFF";                             /* Sets text when switch is "OFF". */
+}
+
+.toggleShutterInner:after {
+    content: "CLOSE";                            /* Sets text when switch is "OFF". */
+}
+
+.toggleLampSwitch,
+.toggleShutterSwitch {
+    background-color: black;                    /* Set background color. */
+    border: 2px solid red;                      /* Set border width, style, and color. */
+    border-radius: 2.0em;                       /* Set border corner radius. */
+    bottom: 0.5em;                              /* Set bottom edge of element above the bottom edge of its nearest parent element. */
+    display: block;                             /* Set element as a block container. */
+    margin: 0.75em;                             /* Set space around element border. */
+    position: absolute;                         /* Set element positioning method. */
+    right: 3.25em;                              /* Set right edge of element in relation to left of the right edge of nearest positioned ancestor. */
+    top: 0.0em;                                 /* Set top edge of element in relation to top edge of nearest positioned ancestor. */
+    transition: all 0.3s ease-in 0s;            /* Transition the margin smoothly. */
+    width: 1.25em;                              /* Set width in containing block. */
+}
+
+.toggleCheckbox:checked + .toggleLampLabel .toggleAutoManInner,
+.toggleCheckbox:checked + .toggleLampLabel .toggleLampInner,
+.toggleCheckbox:checked + .toggleShutterLabel .toggleShutterInner {
+    margin-left: 0.0em;                         /* Set space around element left border. */
+}
+
+.toggleCheckbox:checked + .toggleLampLabel .toggleLampSwitch,
+.toggleCheckbox:checked + .toggleShutterLabel .toggleShutterSwitch {
+    right: 0.0em;                               /* Set right edge of element in relation to left of the right edge of nearest positioned ancestor. */
+}
+
+.lampGroup,
+.shutterGroup {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    justify-content: space-between;             /* Set horizontal alignment of items in element. */
+    margin: 0px;                                /* Set space around element border to 0. */
+    padding: 0px;                               /* Set space between element border and content to 0. */
+}
+
+.lampControl,
+.shutterControl {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+
+/*************
+*  Custom checkbox for Star Machine motion control.
+*************/
+
+.guiCheckbox input {
+    opacity: 0;                                 /* Hide the default checkbox. */
+}
+
+.guiCheckbox {
+    padding-right: 0.75em;                      /* Set space between element right border and content. Centers checkbox vertically. */
+    position: relative;                         /* Set element positioning method. */
+}
+
+/* Create the custom checkbox */
+.checkmark {
+    border: solid 2px crimson;                  /* Set border width, style, and color. Set unchecked color of checkbox. */
+    border-radius: 0.5em;                       /* Set border corner radius. */
+    height: 1.75em;                             /* Set height of checkbox. */
+    left: 0;                                    /* Set the left edge of element from the left edge of its nearest positioned ancestor. */
+    position: absolute;                         /* Set element positioning method. */
+    top: -0.15em;                               /* Position checkbox vertically in container space. */
+    width: 1.75em;                              /* Set width in containing block. */
+}
+
+.guiCheckbox input:checked ~ .checkmark {
+    border: solid 2px green                   /* Set border width, style, and color. Change checkbox border to when checked. */
+}
+
+.checkmark:after {
+    position: absolute;                         /* Set element positioning method. */
+    display: none;                              /* Set element as a block container. Create the checkmark/indicator (hidden when not checked) */
+    content: "";                                /* Needed to make checkmark visible when checked. */
+}
+
+.guiCheckbox input:checked ~ .checkmark:after {
+    display: block;                             /* Set element as a block container. */
+}
+
+.guiCheckbox .checkmark:after {
+    border: solid green;                        /* Set border width, style, and color. Set color of rectangle/ checkmark. */
+    border-width: 0 2px 2px 0;                  /* Hide the sides of the rectangle not needed. Creates the actual checkmark. */
+    height: 1.0em;                              /* Set height in containing block. Set height of rectangle/ checkmark. */
+    left: 0.5em;                                /* Set the left edge of element from the left edge of its nearest positioned ancestor. Position checkmark horizontally in checkbox. */
+    top: 0.1em;                                 /* Position rectangle/ checkmark vertically in checkbox. */
+    transform: rotate(45deg);                   /* Rotates rectangle used to create checkmark. */
+    width: 0.5em;                               /* Set width in containing block. Sets width of rectangle/ checkmark. */
+}
+
+
+
+
+/**************************************************************************************************
+*
+* RGB Cove Tab.
+*
+**************************************************************************************************/
+
+/*************
+* Container borders and heights.
+*************/
+
+#rgbCoveSliderControl,
+#rgbCoveButtonControl,
+#rgbCoveStrobeEffects {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    border-radius: 1.0em;                       /* Border radius. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height to 100% of container. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+#rgbSliderGroup {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    height: 80%;                                /* Set height to 80% of container. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+
+/*************
+* R, G, B vertical jQuery slider elements.
+*************/
+
+#REDCOVE {
+    border: 1px solid red;                      /* Set border width, style, and color. */
+}
+
+#REDCOVE .ui-slider-handle {
+    border: 1px solid red;                      /* Set border width, style, and color. */
+}
+
+#REDCOVE .ui-slider-range {
+    background-color: #550000;                  /* Set background color. */
+}
+
+#GRNCOVE {
+  border: 1px solid green;                      /* Set border width, style, and color. */
+}
+
+#GRNCOVE .ui-slider-handle {
+    border: 1px solid green;                    /* Set border width, style, and color. */
+}
+
+#GRNCOVE .ui-slider-range {
+    background-color: #004400;                  /* Set background color. */
+}
+
+#BLUCOVE {
+    border: 1px solid dodgerblue;               /* Set border width, style, and color. */
+}
+
+#BLUCOVE .ui-slider-handle {
+    border: 1px solid dodgerblue;               /* Set border width, style, and color. */
+}
+
+#BLUCOVE .ui-slider-range {
+    background-color: #004444;                  /* Set background color. */
+}
+
+
+/*************
+* RGB Master horizontal jQuery slider.
+*************/
+
+#RGBCOVE {
+    background-color: black;                    /* Set background color. */
+    border: 1px solid goldenrod;                /* Set border width, style, and color. */
+    outline: none;                              /* No outline when selected. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+#RGBCOVE .ui-slider-handle {
+    background-color: black;                    /* Set background color. */
+    border: 1px solid goldenrod;                /* Set border width, style, and color. */
+    border-radius: 20%;                         /* Set border corner radius. */
+    cursor: pointer;                            /* Set the type of mouse cursor */
+    height: 3.0em;                               /* Sets handle height. */
+    margin-top: -1.5em;                         /* Set space around element top border. Should be minus half the height value. */
+    outline: none;                              /* No outline when selected. */
+    top: 50%;                                   /* Needed to align slider handle vertically. */
+    width: 2.0em;                                /* Set width in containing block. Sets handle width. */
+}
+
+#RGBCOVE .ui-slider-range {
+    background-color: #444400;                  /* Set background color. */
+}
+
+#rgbMasterSliderGroup {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    height: 20%;                                /* Set height to 20% of container. */
+}
+
+#lblRGBCOVEMaster,
+#lblRGBCOVE {
+    margin-bottom: 1.0em;                       /* Set space around element bottom border. */
+    margin-left: 0.75em;                        /* Set space around element left border. */
+    margin-right: 0.75em;                       /* Set space around element right border. */
+    width: 6.0em;                               /* Set width in containing block. Overrides .labelText width: 100% */
+}
+
+
+/*************
+* R, G, B cove fade and preset buttons.
+*************/
+
+#rgbCoveButtons {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+/*************
+* R, G, B cove strobe control.
+*************/
+
+#strobeFadeDuration {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+.strobeButtonPair {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+#rgbStrobeButtons {
+    border-top: 2px solid crimson;              /* Set border width, style, and color. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+
+
+
+/**************************************************************************************************
+*
+* White Cove Tab.
+*
+**************************************************************************************************/
+
+/*************
+* Container borders and heights.
+*************/
+
+#whiteCoveSliderControl,
+#whiteCoveButtons,
+#whiteCoveStrobeEffects,
+#whiteZoneSelect {
+    height: 100%;                               /* Set height in containing block. */
+}
+
+#whiteCoveSliderControl,
+#whiteCoveButtons,
+#whiteCoveStrobeEffects,
+#whiteZoneSelect {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    border-radius: 1.0em;                       /* Border radius. */
+}
+
+
+/*************
+* White vertical jQuery slider elements.
+*************/
+
+#whiteCoveSliderControl {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: center;                    /* Set horizontal alignment of items in element. */
+}
+
+#whiteCoveSliderContainer {
+    height: 90%;                                /* Set height in containing block. */
+}
+
+#WHTCOVE {
+    border: 1px solid grey;                     /* Set border width, style, and color. */
+}
+
+#WHTCOVE .ui-slider-handle {
+    border: 1px solid grey;                     /* Set border width, style, and color. */
+}
+
+#WHTCOVE .ui-slider-range {
+    background: #333333;                        /* Set background color. */
+}
+
+
+/*************
+* White Preset buttons and strobe control.
+*************/
+
+#whiteStrobeEffectsLabel,
+#whiteStrobeControlLabel {
+    margin-bottom: 2.0em;
+    margin-top: 2.0em;
+}
+
+#whiteCoveFadeStrobe {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-between;             /* Set horizontal alignment of items in element. */
+}
+
+#whiteCoveButtons {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+#whiteCoveStrobeEffects {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+#strobeFadeDuration {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    margin-bottom: 4.0em;
+    width: 100%;                                /* Set width in containing block. */
+}
+
+.whiteStrobeButtonPair {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+}
+
+#whiteStrobeButtons {
+    border-top: 2px solid red;              /* Set border width, style, and color. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    width: 90%;                                 /* Set width in containing block. */
+}
+
+
+/*************
+* White Cove Zone Control.
+*************/
+
+#whiteZoneSelect {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+.whiteZoneGroup {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+.zoneText {
+    color: darkorange;                          /* Set color. */
+}
+
+
+
+
+/**************************************************************************************************
+*
+* Star Machine Elevator, Lamps, and Shutters Tab.
+*
+**************************************************************************************************/
+
+/*************
+* Container borders and heights.
+*************/
+
+#elevatorControl,
+#starsTwilightMoonGroup,
+#solarSystemGroup,
+#gridsMarkersConstellationsGroup {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    border-radius: 1em;                         /* Set border corner radius. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height in containing block. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+#elevatorButtons {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height in containing block. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+#twilightMoonGroup,
+#solarSystemShutterGroup {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+#moonPhaseControl {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    border-top: 2px solid crimson;              /* Set border width, style, and color. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+#moonPhaseMotionControl {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    margin-top: 1.0em;                          /* Set space around element top border. */
+}
+
+#mnphsamLabel,
+#mnphsoffLabel,
+#mnphsonLabel {
+    text-align: center;                         /* Set text horizontal alignment to center. */
+    width: 9.0em;                               /* Set width in containing block. */
+}
+
+#solarSystemLamp{
+    margin-bottom: 4.0em;                       /* Set space around element border. */
+}
+
+#gridsMarkersGroup,
+#gridsMarkerToggleGroup,
+#constellationGroup {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+#constellationGroup {
+    border-top: 2px solid crimson;              /* Set border width, style, and color. */
+    margin-top: 1.0em;                          /* Set space around element top border. */
+}
+
+
+
+
+/**************************************************************************************************
+*
+* Star Machine Motions Tab.
+*
+**************************************************************************************************/
+
+/*************
+* Container borders and heights.
+*************/
+
+#dailyPresetPositions,
+#motionsGroup {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    border-radius: 1.0em;                       /* Set border corner radius. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height to 100% of container. */
+    width: 100%;                                /* Set width in containing block. */
+}
+
+#dailyPositionButtons {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height to 100% of container. */
+    justify-content: space-around;              /* Set vertical alignment of items in element. */
+}
+
+#motionSlidersGroup {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    height: 100%;                               /* Set height to 100% of container. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+}
+
+
+/*************
+* Motion sliders and buttons.
+*************/
+
+.motionSlider {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    margin-bottom: 1.0em;                       /* Set space around element bottom border. */
+    width: 8.0em;                               /* Set width in containing block. */
+}
+
+#stopDAILY,
+#stopLAT,
+#stopANN,
+#stopHEAD,
+#stopPREC {
+    height: 3.0em;                              /* Set height to 100% of container. */
+}
+
+#stopDAILY:disabled,
+#stopLAT:disabled,
+#stopANN:disabled,
+#stopHEAD:disabled,
+#stopPREC:disabled {
+    opacity: 0.3;                               /* Set opacity of element. */
+}
+
+
+
+
+/**************************************************************************************************
+*
+* Hercules Remote Tab.
+*
+**************************************************************************************************/
+
+/*************
+* Container borders and heights.
+*************/
+
+#remoteCommands,
+#herculesShowListGroup {
+    border: 2px solid crimson;                  /* Set border width, style, and color. */
+    border-radius: 1.0em;                       /* Set border corner radius. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+}
+
+
+/*************
+* Command and Load Show buttons.
+*************/
+
+#remoteCommandButtons {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    height: 100%;                               /* Set height in containing block. */
+    justify-content: space-evenly;              /* Set vertical alignment of items in element. */
+    margin-top: 1.0em;                          /* Set space around element top border. */
+}
+
+#hercShowList {
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: row;                        /* Set element main axis to horizontal. */
+    height: 100%;                               /* Set height in containing block. */
+    justify-content: space-around;              /* Set horizontal alignment of items in element. */
+    margin-top: 1.0em;                          /* Set space around element top border. */
+}
+
+.showListGroup {
+    align-items: center;                        /* Set vertical alignment of items in element. */
+    display: flex;                              /* Set element as a block-level flex container. */
+    flex-direction: column;                     /* Set element main axis to vertical. */
+    justify-content: space-evenly;              /* Set vertical alignment of items in element. */
+    width: 9.0em;                               /* Set width in containing block. */
+}

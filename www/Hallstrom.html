@@ -1,0 +1,1372 @@
+<!-- Version date: 05June22 -->
+<!-- For use with Hercules 4.0 RS-232 only -->
+<!DOCTYPE html>
+
+<html lang="en"><!-- html -->
+
+<head><!-- head -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- jQuery-UI 1.12.1 and jQuery 3.3.1 -->
+    <link rel="stylesheet" type="text/css" href="css/ExternalCSS/jquery-ui.min-1.12.1.css">
+    <script src="js/ExternalJS/jquery-3.3.1.min.js"></script>
+    <script src="js/ExternalJS/jquery-ui.min-1.12.1.js"></script>
+    <script src="js/ExternalJS/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- Bootstrap 4.0 -->
+    <link rel="stylesheet" type="text/css" href="css/ExternalCSS/bootstrap.min-4.0.0.css">
+    <script src="js/ExternalJS/bootstrap-4.0.0.min.js"></script>
+
+    <!-- Custom CSS and Javascript -->
+    <link rel="stylesheet" type="text/css" href="css/Hallstrom.css">
+    
+    <script src="js/Hallstrom.js"></script>
+    <script src="js/Hallstrom_UserChangeable.js"></script>
+
+    <!-- Chrome tab title -->
+    <title>One Ring Console</title>
+
+</head><!-- /head -->
+
+
+<body><!-- body -->
+
+    <div id="mainContainter"><!-- mainContainer -->
+
+        <nav id="navigation" class="navbar navbar-expand-sm"><!-- navBar -->
+
+            <a class="navbar-brand" href="#">Hallstrom Planetarium</a><!-- Brand/logo -->
+
+            <ul class="navbar-nav nav"><!-- navBarLinks -->
+
+                <li class="nav-item"><!-- tab-01 -->
+                    <a href="#tab-01" class="nav-link active" data-toggle="tab" role="tab">RGB<br>Cove</a>
+                </li><!-- /tab-01 -->
+
+                <li class="nav-item"><!-- tab-02 -->
+                    <a href="#tab-02" class="nav-link" data-toggle="tab" role="tab">White<br>Cove</a>
+                </li><!-- /tab-02 -->
+
+                <li class="nav-item"><!-- tab-03 -->
+                    <a href="#tab-03" class="nav-link" data-toggle="tab" role="tab">RGB<br>FX1</a>
+                </li><!-- /tab-03 -->
+
+                <li class="nav-item"><!-- tab-04 -->
+                    <a href="#tab-04" class="nav-link" data-toggle="tab" role="tab">Quick<br>Chase</a>
+                </li><!-- /tab-04 -->
+
+                <li class="nav-item"><!-- tab-05 -->
+                    <a href="#tab-05" class="nav-link" data-toggle="tab" role="tab">512<br>Lamps</a>
+                </li><!-- /tab-05 -->
+
+                <li class="nav-item"><!-- tab-06 -->
+                    <a href="#tab-06" class="nav-link" data-toggle="tab" role="tab">512<br>Motions</a>
+                </li><!-- /tab-06 -->
+
+                <li class="nav-item"><!-- tab-07 -->
+                    <a href="#tab-07" class="nav-link" data-toggle="tab" role="tab">Remote<br>Control</a>
+                </li><!-- /tab-07 -->
+
+            </ul><!-- /navBarLinks -->
+
+            <div id="autoManGroup"><!-- autoManGroup -->
+
+                <div id="videoShutter" class="shutterControl"><!-- videoShutter -->
+                    <label class="controlText">Video Shutter</label><!-- /videoShutterLabel -->
+
+                    <div class="toggleShutter"><!-- videoShutterToggle -->
+                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox" id="VIDEO">
+                        <label class="toggleShutterLabel" for="VIDEO">
+                            <span class="toggleShutterInner"></span>
+                            <span class="toggleShutterSwitch"></span>
+                        </label>
+                    </div><!-- /videoShutterToggle -->
+                </div><!-- videoShutter -->
+
+                <div class="lampControl"><!-- autoManLamp -->
+                    <label class="controlText">Auto / Man</label><!-- /autoManLampLabel -->
+
+                    <div class="toggleLamp"><!-- autoManLampToggle -->
+                        <input type="checkbox" class="toggleCheckbox" id="AutoMan">
+                        <label class="toggleLampLabel" for="AutoMan">
+                            <span class="toggleAutoManInner"></span>
+                            <span class="toggleLampSwitch"></span>
+                        </label>
+                    </div><!-- /autoManLampToggle -->
+                </div><!-- autoManLamp -->
+
+            </div><!-- /autoManGroup -->
+
+        </nav><!-- /navBar -->
+
+
+        <div id="all-tabs" class="tab-content"><!-- all-tabs -->
+
+            <div id="tab-01" class="tab-pane fade show active" role="tabpanel"><!-- tab-01 -->
+
+                <div id="rgbCoveTab" class="tab-gui"><!-- rgbCoveTab -->
+
+                    <div id="rgbCoveSliderControl" class="col-5"><!-- rgbCoveSliderControl -->
+
+                        <div id="rgbSliderGroup"><!-- rgbCoveSliderGroup -->
+    
+                            <div class="verticalSlider"><!-- redCoveSlider -->
+                                <label class="labelText">Red:</label>
+    
+                                <div id="REDCOVE" class="v-slider coveSlider"></div>
+    
+                                <output id="lblREDCOVE" class="labelText" for="REDCOVE">0</output>
+                            </div><!-- /redCoveSlider -->
+    
+                            <div class="verticalSlider"><!-- grnCoveSlider -->
+                                <label class="labelText">Green:</label>
+    
+                                <div id="GRNCOVE" class="v-slider coveSlider"></div>
+    
+                                <output id="lblGRNCOVE" class="labelText" for="GRNCOVE">0</output>
+                            </div><!-- /grnCoveSlider -->
+    
+                            <div class="verticalSlider"><!-- bluCoveSlider -->
+                                <label class="labelText">Blue:</label>
+    
+                                <div id="BLUCOVE" class="v-slider coveSlider"></div>
+    
+                                <output id="lblBLUCOVE" class="labelText" for="BLUCOVE">0</output>
+                            </div><!-- /bluCoveSlider -->
+    
+                        </div><!-- /rgbCoveSliderGroup -->
+    
+                        <div id="rgbMasterSliderGroup"><!-- rgbMasterSliderGroup -->
+                            <label id="lblRGBCOVEMaster" class="labelText">RGB<br>Master</label>
+    
+                            <div id="RGBCOVE" class="masterSlider"></div>
+    
+                            <output id="lblRGBCOVE" class="labelText" for="RGBCOVE">100</output>
+                        </div><!-- rgbMasterSliderGroup -->
+    
+                    </div><!-- rgbCoveSliderControl -->
+    
+                    <div id="rgbCoveButtonControl" class="col-4"><!-- rgbCoveButtonControl -->
+
+                        <div id="rgbCoveButtons" class="buttonSpacer"><!-- /rgbCoveButtons -->
+                            <label class="labelText mb-2">RGB Fade Buttons:</label>
+
+                            <div class="coveButtonPair"><!-- redCoveButtons -->
+                                <button id="rgbFade_00" type="button" class="guiButton rgbCoveFade"></button>
+                                <button id="rgbFade_01" type="button" class="guiButton rgbCoveFade"></button>
+                            </div><!-- /redCoveButtons -->
+
+                            <div class="coveButtonPair"><!-- grnCoveButtons -->
+                                <button id="rgbFade_02" type="button" class="guiButton rgbCoveFade"></button>
+                                <button id="rgbFade_03" type="button" class="guiButton rgbCoveFade"></button>
+                            </div><!-- /grnCoveButtons -->
+
+                            <div class="coveButtonPair"><!-- bluCoveButtons -->
+                                <button id="rgbFade_04" type="button" class="guiButton rgbCoveFade"></button>
+                                <button id="rgbFade_05" type="button" class="guiButton rgbCoveFade"></button>
+                            </div><!-- /bluCoveButtons -->
+
+                            <div class="coveButtonPair mt-3"><!-- rgbCoveButtons -->
+                                <button id="rgbFade_06" type="button" class="guiButton rgbCoveFade"></button>
+                                <button id="rgbFade_07" type="button" class="guiButton rgbCoveFade"></button>
+                            </div><!-- rgbCoveButtons -->
+                            
+                            <div class="coveButtonPair"><!-- rgbCoveLongButtons -->
+                                <button id="rgbFade_08" type="button" class="guiButton rgbCoveFade"></button>
+                                <button id="rgbFade_09" type="button" class="guiButton rgbCoveFade"></button>
+                            </div><!-- /rgbCoveLongButtons -->
+
+                        </div><!-- /rgbCoveButtons -->
+
+                        <label class="labelText">Preset Cove Levels:</label><!-- /presetButtonsLabel -->
+    
+                        <div class="buttonSpacer"><!-- buttonSpacer -->
+                            <div class="coveButtonPair"><!-- presetButtonPair00 -->
+                                <button id="presetON_00" class="guiButton presetCove"></button>
+                                <button id="presetOF_00" class="guiButton presetCove"></button>
+                            </div><!-- /presetButtonPair00 -->
+    
+                            <div class="coveButtonPair"><!-- presetButtonPair01 -->
+                                <button id="presetON_01" class="guiButton presetCove"></button>
+                                <button id="presetOF_01" class="guiButton presetCove"></button>
+                            </div><!-- /presetButtonPair01 -->
+    
+                            <div class="coveButtonPair"><!-- presetButtonPair02 -->
+                                <button id="presetON_02" class="guiButton presetCove"></button>
+                                <button id="presetOF_02" class="guiButton presetCove"></button>
+                            </div><!-- /presetButtonPair02 -->
+
+                        </div><!-- /buttonSpacer -->
+                    
+                    </div><!-- /rgbCoveButtonControl -->
+    
+                    <div id="rgbCoveStrobeEffects" class="col-3"><!-- rgbCoveStrobeEffects -->
+    
+                        <div id="strobeFadeDuration"><!-- strobeFadeDuration -->
+                            <label id="strobeEffectsLabel" class="labelText">RGB Strobe Fade Time</label><!-- /strobeEffectsLabel -->
+    
+                            <div class="buttonSpacer"><!-- buttonSpacer -->
+                                <div class="strobeButtonPair"><!-- strobeButtonPair01 -->
+                                    <input id="rgbStrobeFade_00" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_00" for="rgbStrobeFade_00"></label>
+        
+                                    <input id="rgbStrobeFade_01" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_01" for="rgbStrobeFade_01"></label>
+                                </div><!-- /presetButtonPair01 -->
+        
+                                <div class="strobeButtonPair"><!-- strobeButtonPair02 -->
+                                    <input id="rgbStrobeFade_02" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_02" for="rgbStrobeFade_02"></label>
+        
+                                    <input id="rgbStrobeFade_03" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_03" for="rgbStrobeFade_03"></label>
+                                </div><!-- /presetButtonPair02 -->
+        
+                                <div class="strobeButtonPair"><!-- strobeButtonPair03 -->
+                                    <input id="rgbStrobeFade_04" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_04" for="rgbStrobeFade_04"></label>
+        
+                                    <input id="rgbStrobeFade_05" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_05" for="rgbStrobeFade_05"></label>
+                                </div><!-- /presetButtonPair03 -->
+        
+                                <div class="strobeButtonPair"><!-- strobeButtonPair04 -->
+                                    <input id="rgbStrobeFade_06" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_06" for="rgbStrobeFade_06"></label>
+        
+                                    <input id="rgbStrobeFade_07" type="radio" name="selectRGBStrobeFadeDuration">
+                                    <label id="rgbStrobeFadeLabel_07" for="rgbStrobeFade_07"></label>
+                                </div><!-- /presetButtonPair04 -->
+                            </div><!-- /buttonSpacer -->
+                            
+                        </div><!-- /strobeFadeDuration -->
+    
+                        <div id="rgbStrobeButtons"><!-- rgbStrobeButtons -->
+                            <label class="labelText">RGB Strobe Control:</label>
+    
+                            <div class="buttonSpacer"><!-- buttonSpacer -->
+                                <div class="coveButtonPair">
+                                    <button id="strobeRED" class="guiButton strobeRGB">RED</button>
+                                    <button id="strobeGRN" class="guiButton strobeRGB">GRN</button>
+                                </div>
+
+                                <div class="coveButtonPair">
+                                    <button id="strobeBLU" class="guiButton strobeRGB">BLU</button>
+                                    <button id="strobeRGB" class="guiButton strobeRGB">RGB</button>
+                                </div>
+                            </div><!-- /buttonSpacer -->
+                            
+                        </div><!-- /rgbStrobeButtons -->
+    
+                    </div><!-- /rgbCoveStrobeEffects -->
+                    
+                </div><!-- /rgbCoveTab -->
+
+            </div><!-- /tab-01 -->
+
+
+            <div id="tab-02" class="tab-pane fade" role="tabpanel"><!-- tab-02 -->
+
+                <div id="whiteCoveTab" class="tab-gui"><!-- whiteCoveTab -->
+                    
+                    <div id="whiteCoveSliderControl" class="col-3"><!-- whiteCoveSliderControl -->
+
+                        <div id="whiteCoveSliderContainer"><!-- whiteCoveSliderContainer -->
+                            <div class="verticalSlider"><!-- whiteCoveSlider -->
+                                <label class="labelText">White:</label>
+        
+                                <div id="WHTCOVE" class="v-slider coveSlider"></div>
+        
+                                <output id="lblWHTCOVE" class="labelText" for="WHTCOVE">0</output>
+                            </div><!-- /whiteCoveSlider -->
+                        </div><!-- /whiteCoveSliderContainer -->
+
+                    </div><!-- /whiteCoveSliderControl -->
+                        
+                    <div id="whiteCoveButtons" class="col-3"><!-- whiteCoveButtons -->
+
+                        <div>
+
+                            <label class="labelText">White Fade Buttons:</label>
+
+                            <div class="coveButtonPair"><!-- whiteCoveButtonPair01 -->
+                                <button id="whiteFade_00" type="button" class="guiButton whiteCoveFade"></button>
+                                <button id="whiteFade_01" type="button" class="guiButton whiteCoveFade"></button>
+                            </div><!-- /whiteCoveButtonPair01 -->
+
+                            <div class="coveButtonPair"><!-- whiteCoveButtonPair02 -->
+                                <button id="whiteFade_02" type="button" class="guiButton whiteCoveFade"></button>
+                                <button id="whiteFade_03" type="button" class="guiButton whiteCoveFade"></button>
+                            </div><!-- /whiteCoveButtonPair02 -->
+
+                        </div>
+                        
+                        <div>
+
+                            <label class="labelText">White To Percentage Buttons:</label>
+
+                            <div class="coveButtonPair"><!-- whiteCoveButtonPair03 -->
+                                <button id="whiteFade_04" type="button" class="guiButton whiteCoveFade"></button>
+                                <button id="whiteFade_05" type="button" class="guiButton whiteCoveFade"></button>
+                            </div><!-- /whiteCoveButtonPair03 -->
+                            
+                            <div class="coveButtonPair mb-1"><!-- whiteCoveButtonPair04 -->
+                                <button id="whiteFade_06" type="button" class="guiButton whiteCoveFade"></button>
+                                <button id="whiteFade_07" type="button" class="guiButton whiteCoveFade"></button>
+                            </div><!-- /whiteCoveButtonPair04 -->
+
+                        </div>
+                        
+                
+                    </div><!-- /whiteCoveButtons -->
+                    
+                    <div id="whiteCoveStrobeEffects" class="col-3"><!-- whiteCoveStrobeEffects -->
+
+                        <div id="strobeFadeDuration"><!-- strobeFadeDuration -->
+                            <label id="whiteStrobeEffectsLabel" class="labelText">White Strobe Fade Time</label><!-- /strobeEffectsLabel -->
+    
+                            <div class="buttonSpacer"><!-- buttonSpacer -->
+                                <div class="whiteStrobeButtonPair"><!-- strobeButtonPair01 -->
+                                    <input id="whiteStrobeFade_00" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_00" for="whiteStrobeFade_00"></label>
+        
+                                    <input id="whiteStrobeFade_01" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_01" for="whiteStrobeFade_01"></label>
+                                </div><!-- /presetButtonPair01 -->
+        
+                                <div class="whiteStrobeButtonPair"><!-- strobeButtonPair02 -->
+                                    <input id="whiteStrobeFade_02" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_02" for="whiteStrobeFade_02"></label>
+        
+                                    <input id="whiteStrobeFade_03" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_03" for="whiteStrobeFade_03"></label>
+                                </div><!-- /presetButtonPair02 -->
+        
+                                <div class="whiteStrobeButtonPair"><!-- strobeButtonPair03 -->
+                                    <input id="whiteStrobeFade_04" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_04" for="whiteStrobeFade_04"></label>
+        
+                                    <input id="whiteStrobeFade_05" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_05" for="whiteStrobeFade_05"></label>
+                                </div><!-- /presetButtonPair03 -->
+        
+                                <div class="whiteStrobeButtonPair"><!-- strobeButtonPair04 -->
+                                    <input id="whiteStrobeFade_06" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_06" for="whiteStrobeFade_06"></label>
+        
+                                    <input id="whiteStrobeFade_07" type="radio" name="selectWhiteStrobeFadeDuration">
+                                    <label id="whiteStrobeFadeLabel_07" for="whiteStrobeFade_07"></label>
+                                </div><!-- /presetButtonPair04 -->
+                            </div><!-- /buttonSpacer -->
+                            
+                        </div><!-- /strobeFadeDuration -->
+    
+                        <div id="whiteStrobeButtons"><!-- whiteStrobeButtons -->
+                            <label id="whiteStrobeControlLabel" class="labelText">White Strobe Control:</label>
+    
+                            <button id="strobeWhite" class="guiButton">White Strobe</button>
+                            
+                        </div><!-- /whiteStrobeButtons -->
+    
+                    </div><!-- /whiteCoveStrobeEffects -->
+                    
+                    <div id="whiteZoneSelect" class="col-3"><!-- whiteZoneSelect -->
+                        <label class="labelText mb-4">White Zone Select</label><!-- /whiteZoneSelectLabel -->
+
+                        <div class="whiteZoneGroup"><!-- whiteZonePair01 -->
+                            <label class="zoneText">White Zone 1</label>
+                            <label class="guiCheckbox">
+                                    <input type="checkbox" id="WHT1" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair01 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair02 -->
+                            <label class="zoneText">White Zone 2</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT2" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair02 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair03 -->
+                            <label class="zoneText">White Zone 3</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT3" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair03 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair04 -->
+                            <label class="zoneText">White Zone 4</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT4" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair04 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair05 -->
+                            <label class="zoneText">White Zone 5</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT5" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair05 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair06 -->
+                            <label class="zoneText">White Zone 6</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT6" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair06 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair07 -->
+                            <label class="zoneText">White Zone 7</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT7" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair07 -->
+                        
+                        <div class="whiteZoneGroup"><!-- whiteZonePair08 -->
+                            <label class="zoneText">White Zone 8</label>
+                            <label class="guiCheckbox">
+                                <input type="checkbox" id="WHT8" class="checkboxWHTZone" checked>
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div><!-- /whiteZonePair08 -->
+
+                    </div><!-- /whiteZoneSelect -->
+                
+                </div><!-- /whiteCoveTab -->
+
+            </div><!-- /tab-02 -->
+
+
+            <div id="tab-03" class="tab-pane fade" role="tabpanel"><!-- tab-03 -->
+
+                <div id="rgbFX1tab"><!-- rgbFX1tab -->
+
+                    <div id="rgbFX1SliderControl" class="col-4"><!-- rgbFX1SliderControl -->
+
+                        <div id="rgbFX1SliderGroup"><!-- rgbFX1SliderGroup -->
+
+                            <div class="verticalSlider"><!-- rfx1Slider -->
+                                <label class="labelText">RFX1:</label>
+
+                                <div id="RFX1" class="v-slider coveSlider"></div>
+
+                                <output id="lblRFX1" class="labelText" for="RFX1">0</output>
+                            </div><!-- /rfx1Slider -->
+
+                            <div class="verticalSlider"><!-- gfx1Slider -->
+                                <label class="labelText">GFX1:</label>
+
+                                <div id="GFX1" class="v-slider coveSlider"></div>
+
+                                <output id="lblGFX1" class="labelText" for="GFX1">0</output>
+                            </div><!-- /gfx1Slider -->
+
+                            <div class="verticalSlider"><!-- bfx1Slider -->
+                                <label class="labelText">BFX1:</label>
+
+                                <div id="BFX1" class="v-slider coveSlider"></div>
+
+                                <output id="lblBFX1" class="labelText" for="BFX1">0</output>
+                            </div><!-- /bfx1Slider -->
+
+                        </div><!-- /rgbFX1SliderGroup -->
+
+                        <div id="rgbFX1MasterSliderControl"><!-- rgbFX1MasterSliderControl -->
+
+                            <div id="rgbFX1MasterSliderGroup"><!-- rgbFX1MasterSliderGroup -->
+                                <label id="lblRGBFX1Master" class="labelText">RGBFX1<br>Master</label>
+
+                                <div id="RGBFX1" class="fxControlSliders masterSlider"></div>
+
+                                <output id="lblRGBFX1" class="labelText" for="RGBFX1">100</output>
+                            </div><!-- rgbFX1MasterSliderGroup -->
+
+                        </div><!-- /rgbFX1MasterSliderControl -->
+
+                    </div><!-- rgbFX1SliderControl -->
+                    
+                    <div id="fx1Control" class="col-8"><!-- fx1Control -->
+                        
+                        <div id="fx1DeviceControl"><!-- fx1DeviceControl -->
+
+                            <label id="fx1DeviceSelectLabel" class="controlText">Device Select</label><!-- /fx1DeviceSelectLabel -->
+
+                            <input id="selectRGBFX1" type="radio" name="fx1DeviceSelect" value="RGBFX1" checked>
+                                <label id="selectRGBFX1Label" for="selectRGBFX1">RGBFX1</label>
+                            <input id="selectRFX1" type="radio" name="fx1DeviceSelect" value="RFX1">
+                                <label id="selectRFX1Label" for="selectRFX1">RFX1</label>
+                            <input id="selectGFX1" type="radio" name="fx1DeviceSelect" value="GFX1">
+                                <label id="selectGFX1Label" for="selectGFX1">GFX1</label>
+                            <input id="selectBFX1" type="radio" name="fx1DeviceSelect" value="BFX1">
+                                <label id="selectBFX1Label" for="selectBFX1">BFX1</label>
+
+                        </div><!-- /fx1DeviceControl -->
+                        
+                        <div id="fx1BulpPattern"><!-- fx1BulpPattern -->
+
+                            <label id="lblFX1BulbsOn" class="fx1Text">Bulbs<br>On</label>
+                            <div id="FX1BulbsOn" class="fxControlSliders fxBulbsOnOffSlider"></div>
+                            <output id="lblFX1BulbsOnValue" class="fx1Text" for="FX1BulbsOn">1</output>
+                        
+                            <label id="lblFX1BulbsOff" class="fx1Text">Bulbs<br>Off</label>
+                            <div id="FX1BulbsOff" class="fxControlSliders fxBulbsOnOffSlider"></div>
+                            <output id="lblFX1BulbsOffValue" class="fx1Text" for="fX1BulbsOff">3</output>
+                            
+                            <button id="fx1BulbPatternSet" type="button" class="col-1 guiButton">Set</button>
+
+                        </div><!-- /fx1BulbPattern -->
+                        
+                        <div id="fx1SpeedControl"><!-- fx1SpeedControl -->
+
+                            <label id="lblFX1Speed" class="fx1Text">Chase<br>Speed</label>
+                            <div id="fX1Speed" class="fxControlSliders "></div>
+                            <output id="lblFX1SpeedValue" class="fx1Text" for="fX1Speed">5</output>
+                            
+                            <button id="fx1SpeedSet" type="button" class="col-1 guiButton">Set</button>
+
+                        </div><!-- /fx1SpeedControl -->
+
+                        
+                        <div id="fx1BulbEnable"><!-- fx1BulbEnable -->
+
+                            <label id="lblFX1BulbEnableStart" class="fx1Text">Enable<br>Start</label>
+                            <div id="FX1BulbEnableStart" class="fxControlSliders fxBulbEnableDisable"></div>
+                            <output id="lblFX1BulbEnableStartValue" class="fx1Text" for="FX1BulbEnableStart">1</output>
+                            
+                            <label id="lblFX1BulbEnableEnd" class="fx1Text">Enable<br>End</label>
+                            <div id="FX1BulbEnableEnd" class="fxControlSliders fxBulbEnableDisable"></div>
+                            <output id="lblFX1BulbEnableEndValue" class="fx1Text" for="FX1BulbEnableEnd">64</output>
+                            
+                            <button id="fx1BulbEnableSet" type="button" class="col-1 guiButton">Set</button>
+
+                        </div><!-- /fx1BulbEnable -->
+                        
+                        <div id="fx1BulbDisable"><!-- fx1BulbDisable -->
+
+                            <label id="lblFX1BulbDisableStart" class="fx1Text">Disable<br>Start</label>
+                            <div id="FX1BulbDisableStart" class="fxControlSliders fxBulbEnableDisable"></div>
+                            <output id="lblFX1BulbDisableStartValue" class="fx1Text" for="FX1BulbDisableStart">0</output>
+                            
+                            <label id="lblFX1BulbDisableEnd" class="fx1Text">Disable<br>End</label>
+                            <div id="FX1BulbDisableEnd" class="fxControlSliders fxBulbEnableDisable"></div>
+                            <output id="lblFX1BulbDisableEndValue" class="fx1Text" for="FX1BulbDisableEnd">0</output>
+                            
+                            <button id="fx1BulbDisableSet" type="button" class="col-1 guiButton">Set</button>
+
+                        </div><!-- /fx1BulbDisable -->
+
+                        <div id="fx1Chase"><!-- fx1Chase -->
+
+                            <label class="fx1Text" for="fx1ChasePattern">Chase<br>Pattern</label>
+                            
+                            <div id="fX1ChasePattern" class="fxControlSliders"></div>
+                            <output id="lblFX1ChasePattern" class="fx1Text" for="fX1ChasePattern">0</output>
+                            <label id="lblFX1ChasePatternText" class="col-4 fx1Text">Stop Chase</label>
+                            
+                            <button id="fx1ChaseSet" type="button" class="col-1 guiButton">Set</button>
+                        </div><!-- /fx1Chase -->
+                        
+                        <div id="fx1Buttons"><!-- fx1Buttons -->
+                            <button id="fx1Initialize" type="button" class="col-2 guiButton">Init</button>
+                            
+                            <button id="fx1ProjectorHome" type="button" class="col-2 guiButton">PH</button>
+                        </div><!-- /fx1Buttons -->
+                        
+                    </div><!-- fx1Control -->
+                    
+                </div><!-- /rgbFX1tab -->
+
+            </div><!-- /tab-03 -->
+
+
+            <div id="tab-04" class="tab-pane fade" role="tabpanel"><!-- tab-04 -->
+
+                <div id="fx1QuickChaseTab"><!-- fx1QuickChaseTab -->
+                    
+                    <div id="fx1QuickChaseButtonControl" class="col-4"><!-- fx1QuickChaseButtonControl -->
+                        
+                        <div class="quickChaseHeader"><!-- fx1QuickChaseLabelPH -->
+                            <label class="labelText">FX1 Quick Chase</label><!-- fx1QuickChaseLabel -->
+                            <button id="FX1QuickChasePH" type="button" class="phButton">FX1 PH</button>
+                        </div><!-- /fx1QuickChaseLabelPH -->
+
+                        <div class="qcButtonPair"><!-- fx1QuickChase01Pair -->
+                            <button id="FX1QuickChaseON_00" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_00" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase01Pair -->
+
+                        <div class="qcButtonPair"><!-- fx1QuickChase02Pair -->
+                            <button id="FX1QuickChaseON_01" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_01" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase02Pair -->
+
+                        <div class="qcButtonPair"><!-- fx1QuickChase03Pair -->
+                            <button id="FX1QuickChaseON_02" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_02" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase03Pair -->
+
+                        <div class="qcButtonPair"><!-- fx1QuickChase04Pair -->
+                            <button id="FX1QuickChaseON_03" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_03" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase04Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx1QuickChase05Pair -->
+                            <button id="FX1QuickChaseON_04" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_04" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase05Pair -->
+
+                        <div class="qcButtonPair"><!-- fx1QuickChase06Pair -->
+                            <button id="FX1QuickChaseON_05" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_05" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase06Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx1QuickChase07Pair -->
+                            <button id="FX1QuickChaseON_06" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX1QuickChaseOF_06" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx1QuickChase07Pair -->
+
+                    </div><!-- fx1QuickChaseButtonControl -->
+                    
+                    <div id="fx2QuickChaseButtonControl" class="col-4"><!-- fx2QuickChaseButtonControl -->
+
+                        <div class="quickChaseHeader"><!-- fx2QuickChaseLabelPH -->
+                            <label class="labelText">FX2 Quick Chase</label><!-- fx2QuickChaseLabel -->
+                            <button id="FX2QuickChasePH" type="button" class="phButton">FX2 PH</button>
+                        </div><!-- /fx2QuickChaseLabelPH -->
+
+                        <div class="qcButtonPair"><!-- fx2QuickChase01Pair -->
+                            <button id="FX2QuickChaseON_00" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_00" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase01Pair -->
+
+                        <div class="qcButtonPair"><!-- fx2QuickChase02Pair -->
+                            <button id="FX2QuickChaseON_01" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_01" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase02Pair -->
+
+                        <div class="qcButtonPair"><!-- fx2QuickChase03Pair -->
+                            <button id="FX2QuickChaseON_02" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_02" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase03Pair -->
+
+                        <div class="qcButtonPair"><!-- fx2QuickChase04Pair -->
+                            <button id="FX2QuickChaseON_03" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_03" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase04Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx2QuickChase05Pair -->
+                            <button id="FX2QuickChaseON_04" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_04" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase05Pair -->
+
+                        <div class="qcButtonPair"><!-- fx2QuickChase06Pair -->
+                            <button id="FX2QuickChaseON_05" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_05" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase06Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx2QuickChase07Pair -->
+                            <button id="FX2QuickChaseON_06" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX2QuickChaseOF_06" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase07Pair -->
+
+                    </div><!-- fx2QuickChaseButtonControl -->
+                    
+                    <div id="fx3QuickChaseButtonControl" class="col-4"><!-- fx3QuickChaseButtonControl -->
+
+                        <div class="quickChaseHeader"><!-- fx3QuickChaseLabelPH -->
+                            <label class="labelText">FX3 Quick Chase</label><!-- fx3QuickChaseLabel -->
+                            <button id="FX3QuickChasePH" type="button" class="phButton">FX3 PH</button>
+                        </div><!-- /fx3QuickChaseLabelPH -->
+
+                        <div class="qcButtonPair"><!-- fx3QuickChase01Pair -->
+                            <button id="FX3QuickChaseON_00" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_00" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase01Pair -->
+
+                        <div class="qcButtonPair"><!-- fx3QuickChase02Pair -->
+                            <button id="FX3QuickChaseON_01" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_01" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase02Pair -->
+
+                        <div class="qcButtonPair"><!-- fx3QuickChase03Pair -->
+                            <button id="FX3QuickChaseON_02" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_02" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase03Pair -->
+
+                        <div class="qcButtonPair"><!-- fx3QuickChase04Pair -->
+                            <button id="FX3QuickChaseON_03" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_03" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase04Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx3QuickChase05Pair -->
+                            <button id="FX3QuickChaseON_04" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_04" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx2QuickChase05Pair -->
+
+                        <div class="qcButtonPair"><!-- fx3QuickChase06Pair -->
+                            <button id="FX3QuickChaseON_05" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_05" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase06Pair -->
+                        
+                        <div class="qcButtonPair"><!-- fx3QuickChase07Pair -->
+                            <button id="FX3QuickChaseON_06" type="button" class="qcButtonOn fxQuickChaseButton"></button>
+                            <button id="FX3QuickChaseOF_06" type="button" class="qcButtonOff fxQuickChaseButton"></button>
+                        </div><!-- /fx3QuickChase07Pair -->
+
+                    </div><!-- fx3QuickChaseButtonControl -->
+                    
+                </div><!-- /fx1QuickChaseTab -->
+
+            </div><!-- /tab-04 -->
+
+
+            <div id="tab-05" class="tab-pane fade" role="tabpanel"><!-- tab-05 -->
+
+                <div id="starMachineElevatorLampsTab" class="tab-gui"><!-- starMachineElevatorLampsTab  -->
+
+                    <div id="elevatorControl" class="col-2"><!-- elevatorControl -->
+                        <label class="labelText">Elevator Control</label><!-- elevatorControlLabel -->
+    
+                        <div class="buttonSpacer"><!-- buttonSpacer -->
+                            <div id="elevatorButtons"><!-- elevatorButtons -->
+                                <button id="ELUP" class="guiButton elevatorControl">Up</button>
+                                <button id="ELSTW" class="guiButton elevatorControl">Stow</button>
+                                <button id="ELDN" class="guiButton elevatorControl">Down</button>
+                                <button id="ELOFF" class="guiButton elevatorControl">Off</button>
+                                <button id="LAT90" class="guiButton elevatorControl">Lat 90</button>
+                            </div><!-- /elevatorButtons -->
+                        </div><!-- /buttonSpacer -->
+    
+                    </div><!-- /elevatorControl -->
+                    
+                    <div id="starsTwilightMoonGroup" class="col-3"><!-- starsTwilightMoonGroup -->
+
+                        <div id="starsTwilightMoon"><!-- starsTwilightMoon -->
+
+                            <label class="labelText">Stars, Twilight & Moon</label><!-- /starsTwilightMoonGroupLabel -->
+
+                            <div id="starsLamp" class="lampControl"><!-- starsLamp -->
+                                <label class="controlTextLarge">Stars</label><!-- /starsLampLabel -->
+        
+                                <div class="toggleLamp"><!-- starsLampToggle -->
+                                    <input type="checkbox" class="toggleCheckbox eccs3N" id="STARS">
+                                    <label class="toggleLampLabel" for="STARS">
+                                        <span class="toggleLampInner"></span>
+                                        <span class="toggleLampSwitch"></span>
+                                    </label>
+                                </div><!-- /starsLampToggle -->
+                            </div><!-- starsLamp -->
+        
+                            <div id="twilightMoonGroup"><!-- twilightMoonGroup -->
+        
+                                <div class="lampGroup"><!-- twilightLamps -->
+        
+                                    <div class="lampControl"><!-- twilight01Lamp -->
+                                        <label class="controlText">Twilight 1</label><!-- /twilight01LampLabel -->
+        
+                                        <div class="toggleLamp"><!-- twilight01LampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="TWI1">
+                                            <label class="toggleLampLabel" for="TWI1">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /twilight01LampToggle -->
+                                    </div><!-- /twilight01Lamp -->
+        
+                                    <div class="lampControl"><!-- twilight2Lamp -->
+                                        <label class="controlText">Twilight 2</label><!-- /twilight2LampLabel -->
+        
+                                        <div class="toggleLamp"><!-- twilight2LampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="TWI2">
+                                            <label class="toggleLampLabel" for="TWI2">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /twilight2LampToggle -->
+                                    </div><!-- /twilight2Lamp -->
+        
+                                </div><!-- /twilightLamps -->
+        
+                                <div class="lampGroup"><!-- moonLamps -->
+        
+                                    <div class="lampControl"><!-- moonLamp -->
+                                        <label class="controlText">Moon</label><!-- /moonLampLabel -->
+        
+                                        <div class="toggleLamp"><!-- moonLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="MOON">
+                                            <label class="toggleLampLabel" for="MOON">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /moonLampToggle -->
+                                    </div><!-- /moonLamp -->
+                                    
+                                    <div class="lampControl"><!-- moonGlowLamp -->
+                                        <label class="controlText">Moon Glow</label><!-- /moonGlowLampLabel -->
+        
+                                        <div class="toggleLamp"><!-- moonGlowLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="MGLO">
+                                            <label class="toggleLampLabel" for="MGLO">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /moonGlowLampToggle -->
+                                    </div><!-- /moonGlowLamp -->
+        
+                                </div><!-- /moonLamps -->
+
+                            </div><!-- twilightMoonGroup -->
+
+                        </div><!-- /starsTwilightMoon -->
+                        
+                        <div id="moonPhaseControl"><!-- moonPhaseControl -->
+                            <label class="labelText">Moon Phase Control</label><!-- /moonPhaseControlLabel -->
+
+                            <div class="buttonSpacer"><!-- buttonSpacer -->
+
+                                <div id="moonPhaseMotionControl"><!-- moonPhaseMotionControl -->
+
+                                    <input id="MNPHSAM" class="moonPhase" type="radio" name="moonPhaseMotion" checked>
+                                        <label id="mnphsamLabel" for="MNPHSAM">Annual</label>
+                                    <input id="MNPHSOFF" class="moonPhase" type="radio" name="moonPhaseMotion">
+                                        <label id="mnphsoffLabel" for="MNPHSOFF">Stop</label>
+                                    <input id="MNPHSON" class="moonPhase" type="radio" name="moonPhaseMotion">
+                                        <label id="mnphsonLabel" for="MNPHSON">Run</label>
+
+                                </div><!-- /moonPhaseMotionControl -->
+
+                            </div><!-- /buttonSpacer -->
+                            
+                        </div><!-- /moonPhaseControl -->
+
+                    </div><!-- /starsTwilightMoonGroup -->
+    
+                    <div id="solarSystemGroup" class="col-3"><!-- solarSystemGroup -->
+                        <label class="labelText">Solar System</label><!-- /solarSystemGroupLabel -->
+                        
+                        <div id="solarSystemLamp" class="lampControl mt-2"><!-- solarSystemLamp -->
+                            <label class="controlTextLarge">Solar System Lamp</label><!-- /solarSystemLampLabel -->
+    
+                            <div class="toggleLamp"><!-- solarSystemLampToggle -->
+                                <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="SOL">
+                                <label class="toggleLampLabel" for="SOL">
+                                    <span class="toggleLampInner"></span>
+                                    <span class="toggleLampSwitch"></span>
+                                </label>
+                            </div><!-- /solarSystemLampToggle -->
+                        </div><!-- solarSystemLamp -->
+                        
+                        <div id="solarSystemShutterGroup"><!-- solarSystemShutterGroup -->
+                            
+                            <div class="shutterGroup"><!-- solarSystemShutters01 -->
+                                
+                                <div class="shutterControl"><!-- sunShutter -->
+                                    <label class="controlText">Sun Shutter</label><!-- /sunShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- sunShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="SUNSHUT">
+                                        <label class="toggleShutterLabel" for="SUNSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /sunShutterToggle -->
+                                </div><!-- sunShutter -->
+    
+                                <div class="shutterControl"><!-- mercuryShutter -->
+                                    <label class="controlText">Mercury Shutter</label><!-- /mercuryShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- mercuryShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="MERCSHUT">
+                                        <label class="toggleShutterLabel" for="MERCSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /mercuryShutterToggle -->
+                                </div><!-- mercuryShutter -->
+    
+                            </div><!-- /solarSystemShutters01 -->
+    
+                            <div class="shutterGroup"><!-- solarSystemShutters02 -->
+    
+                                <div class="shutterControl"><!-- venusShutter -->
+                                    <label class="controlText">Venus Shutter</label><!-- /venusShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- venusShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="VENSHUT">
+                                        <label class="toggleShutterLabel" for="VENSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /venusShutterToggle -->
+                                </div><!-- venusShutter -->
+    
+                                <div class="shutterControl"><!-- marsShutter -->
+                                    <label class="controlText">Mars Shutter</label><!-- /marsShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- marsShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="MARSHUT">
+                                        <label class="toggleShutterLabel" for="MARSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /marsShutterToggle -->
+                                </div><!-- marsShutter -->
+    
+                            </div><!-- /solarSystemShutters02 -->
+    
+                            <div class="shutterGroup"><!-- solarSystemShutters03 -->
+    
+                                <div class="shutterControl"><!-- jupiterShutter -->
+                                    <label class="controlText">Jupiter Shutter</label><!-- /jupiterShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- jupiterShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="JUPSHUT">
+                                        <label class="toggleShutterLabel" for="JUPSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /jupiterShutterToggle -->
+                                </div><!-- jupiterShutter -->
+    
+                                <div class="shutterControl"><!-- saturnShutter -->
+                                    <label class="controlText">Saturn Shutter</label><!-- /saturnShutterLabel -->
+    
+                                    <div class="toggleShutter"><!-- saturnShutterToggle -->
+                                        <input type="checkbox" name="toggleShutter" class="toggleCheckbox eccsSwitch" id="SATSHUT">
+                                        <label class="toggleShutterLabel" for="SATSHUT">
+                                            <span class="toggleShutterInner"></span>
+                                            <span class="toggleShutterSwitch"></span>
+                                        </label>
+                                    </div><!-- /saturnShutterToggle -->
+                                </div><!-- saturnShutter -->
+    
+                            </div><!-- solarSystemShutters03 -->
+                            
+                        </div><!-- /solarSystemShutterGroup -->
+                        
+                    </div><!-- /solarSystemGroup -->
+                    
+                    <div id="gridsMarkersConstellationsGroup" class="col-4"><!-- gridsMarkersConstellationsGroup -->
+                        
+                        <div id="gridsMarkersGroup"><!-- gridsMarkersGroup -->
+                            <label class="labelText">Grids & Markers</label><!-- /gridsMarkersGroupLabel -->
+    
+                            <div id="gridsMarkerToggleGroup"><!-- gridsMarkersToggleGroup -->
+    
+                                <div class="lampGroup"><!-- gridsMarkers01 -->
+    
+                                    <div class="lampControl"><!-- meridianLamp -->
+                                        <label class="controlText">Meridian</label><!-- /meridianLabel -->
+    
+                                        <div class="toggleLamp"><!-- meridianLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="MRDN">
+                                            <label class="toggleLampLabel" for="MRDN">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /meridianLampToggle -->
+                                    </div><!-- /meridianLamp -->
+    
+                                    <div class="lampControl"><!-- coordinatesLamp -->
+                                        <label class="controlText">Coord</label><!-- /coordinatesLabel -->
+    
+                                        <div class="toggleLamp"><!-- coordinatesLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="COOR">
+                                            <label class="toggleLampLabel" for="COOR">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /coordinatesLampToggle -->
+                                    </div><!-- /coordinatesLamp -->
+                                    
+                                    <div class="lampControl"><!-- eclipticLamp -->
+                                        <label class="controlText">Ecliptic</label><!-- /eclipticLabel -->
+    
+                                        <div class="toggleLamp"><!-- eclipticLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="ECL">
+                                            <label class="toggleLampLabel" for="ECL">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /eclipticLampToggle -->
+                                    </div><!-- /eclipticLamp -->
+    
+                                </div><!-- /gridsMarkers01 -->
+    
+                                <div class="lampGroup"><!-- gridsMarker02 -->
+    
+                                    <div class="lampControl"><!-- cardinalPointsLamp -->
+                                        <label class="controlText">Card Pts</label><!-- /cardinalPointsLabel -->
+    
+                                        <div class="toggleLamp"><!-- cardinal-points-lamp-toggle-switch -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CARD">
+                                            <label class="toggleLampLabel" for="CARD">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /cardinalPointsLampToggle -->
+                                    </div><!-- /cardinalPointsLamp -->
+                                    
+                                    <div class="lampControl"><!-- homeLatitudeLamp -->
+                                        <label class="controlText">Home Lat</label><!-- /homeLatitudeLabel -->
+    
+                                        <div class="toggleLamp"><!-- homeLatitudeLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="HLAT">
+                                            <label class="toggleLampLabel" for="HLAT">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /homeLatitudeLampToggle -->
+                                    </div><!-- /homeLatitudeLamp -->
+    
+                                    <div class="lampControl"><!-- poleMarkerLamp -->
+                                        <label class="controlText">Pole Mark</label><!-- /poleMarkerLabel -->
+    
+                                        <div class="toggleLamp"><!-- poleMarkerLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="POLE">
+                                            <label class="toggleLampLabel" for="POLE">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /poleMarkerLampToggle -->
+                                    </div><!-- /poleMarkerLamp -->
+    
+                                </div><!-- /gridsMarker02 -->
+    
+                                <div class="lampGroup"><!-- gridsMarkers03 -->
+    
+                                    <div class="lampControl"><!-- zenithLamp -->
+                                        <label class="controlText">Zenith</label><!-- /zenithLabel -->
+    
+                                        <div class="toggleLamp"><!-- zenithLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="ZEN">
+                                            <label class="toggleLampLabel" for="ZEN">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /zenithLampToggle -->
+                                    </div><!-- /zenithLamp -->
+    
+                                    <div class="lampControl"><!-- sateliteLamp -->
+                                        <label class="controlText">Satelite</label><!-- /sateliteLabel -->
+    
+                                        <div class="toggleLamp"><!-- sateliteLampToggle -->
+                                            <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="SAT">
+                                            <label class="toggleLampLabel" for="SAT">
+                                                <span class="toggleLampInner"></span>
+                                                <span class="toggleLampSwitch"></span>
+                                            </label>
+                                        </div><!-- /sateliteLampToggle -->
+                                    </div><!-- /sateliteLamp -->
+    
+                                </div><!-- /gridsMarkers03 -->
+                                
+                            </div><!-- /gridsMarkersToggleGroup -->
+                            
+                        </div><!-- /gridsMarkersGroup -->
+    
+                        <div id="constellationGroup"><!-- constellationGroup -->
+                            <label class="labelText">Constellations</label><!-- constellationGroupLabel -->
+                            
+                            <div class="lampGroup"><!-- constellationLamps01 -->
+    
+                                <div class="lampControl"><!-- con1Lamp -->
+                                    <label class="controlText">Orion</label><!-- /con1LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con1LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON1">
+                                        <label class="toggleLampLabel" for="CON1">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con1LampToggle -->
+                                </div><!-- con1Lamp -->
+    
+                                <div class="lampControl"><!-- con2Lamp -->
+                                    <label class="controlText">Casseopiea</label><!-- /con2LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con2LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON2">
+                                        <label class="toggleLampLabel" for="CON2">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con2LampToggle -->
+                                </div><!-- con2Lamp -->
+                                
+                                <div class="lampControl"><!-- con3Lamp -->
+                                    <label class="controlText">Ursa Major</label><!-- /con3LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con1LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON3">
+                                        <label class="toggleLampLabel" for="CON3">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con3LampToggle -->
+                                </div><!-- con3Lamp -->
+    
+                            </div><!-- /constellationLamps01 -->
+                            
+                            <div class="lampGroup"><!-- constellationLamps02 -->
+                                
+                                <div class="lampControl"><!-- con4Lamp -->
+                                    <label class="controlText">Pegasus</label><!-- /con4LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con4LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON4">
+                                        <label class="toggleLampLabel" for="CON4">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con4LampToggle -->
+                                </div><!-- con4Lamp -->
+                                
+                                <div class="lampControl"><!-- con5Lamp -->
+                                    <label class="controlText">Leo</label><!-- /con5LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con5LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON5">
+                                        <label class="toggleLampLabel" for="CON5">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con5LampToggle -->
+                                </div><!-- con5Lamp -->
+                                
+                                <div class="lampControl"><!-- con6Lamp -->
+                                    <label class="controlText">Taurus</label><!-- /con6LampLabel -->
+    
+                                    <div class="toggleLamp"><!-- con6LampToggle -->
+                                        <input type="checkbox" name="toggleLamp" class="toggleCheckbox eccs3N" id="CON6">
+                                        <label class="toggleLampLabel" for="CON6">
+                                            <span class="toggleLampInner"></span>
+                                            <span class="toggleLampSwitch"></span>
+                                        </label>
+                                    </div><!-- /con6LampToggle -->
+                                </div><!-- con6Lamp -->
+    
+                            </div><!-- /constellationLamps02 -->
+    
+                        </div><!-- /constellationGroup -->
+                        
+                    </div><!-- /gridsMarkersConstellationsGroup -->
+
+                </div><!-- /starMachineElevatorLampsTab  -->
+
+            </div><!-- /tab-05 -->
+
+
+            <div id="tab-06" class="tab-pane fade" role="tabpanel"><!-- tab-06 -->
+
+                <div id="starMachineMotionsTab" class="tab-gui"><!-- starMachineMotionsTab  -->
+
+                    <div id="dailyPresetPositions" class="col-2"><!-- dailyPresetPositions -->
+                    
+                        <label class="labelText">Daily Preset Positions</label>
+                        
+                        <div id="dailyPositionButtons"><!-- dailyPositionButtons -->
+                            <button id="DAILY00Hours" class="guiButton dailyPreset">Daily = 00 hours</button>
+                            <button id="DAILY06Hours" class="guiButton dailyPreset">Daily = 06 hours</button>
+                            <button id="DAILY12Hours" class="guiButton dailyPreset">Daily = 12 hours</button>
+                            <button id="DAILY18Hours" class="guiButton dailyPreset">Daily = 18 hours</button>
+                        </div><!-- /dailyPositionButtons -->
+    
+                    </div><!-- /dailyPresetPositions -->
+    
+                    <div id="motionsGroup" class="col-10"><!-- motionsGroup -->
+
+                        <label class="labelText">Star Machine Motion Control</label><!-- /motionsGroupLabel -->
+    
+                        <div id="motionSlidersGroup"><!-- motionSliders -->
+    
+                            <div class="motionSlider"><!-- dailyMotionControl -->
+                                <label class="controlTextLarge">Daily:</label>
+    
+                                <label class="guiCheckbox">
+                                    <input type="checkbox" id="checkboxDAILY" class="checkboxMotion">
+                                    <span class="checkmark"></span>
+                                </label>
+    
+                                <div id="DAILY" class="v-slider motion-slider"></div>
+                                <output id="lblDAILY" class="controlText" for="DAILYMotion">0</output>
+    
+                                <button id="stopDAILY" class="guiButton motionSTOP">Stop</button>
+    
+                            </div><!-- /dailyMotionControl -->
+    
+                            <div class="motionSlider"><!-- latitudeMotionControl -->
+                                <label class="controlTextLarge">Latitude:</label><!-- latitudeLabel -->
+    
+                                <label class="guiCheckbox">
+                                    <input type="checkbox" id="checkboxLAT" class="checkboxMotion">
+                                    <span class="checkmark"></span>
+                                </label>
+    
+                                <div id="LAT" class="v-slider motion-slider"></div>
+                                <output id="lblLAT" class="controlText" for="LATMotion">0</output>
+    
+                                <button id="stopLAT" class="guiButton motionSTOP">Stop</button>
+    
+                            </div><!-- /latitudeMotionControl -->
+    
+                            <div class="motionSlider"><!-- annualMotionControl -->
+                                <label class="controlTextLarge">Annual:</label><!-- annualLabel -->
+    
+                                <label class="guiCheckbox">
+                                    <input type="checkbox" id="checkboxANN" class="checkboxMotion">
+                                    <span class="checkmark"></span>
+                                </label>
+    
+                                <div id="ANN" class="v-slider motion-slider"></div>
+                                <output id="lblANN" class="controlText" for="ANNMotion">0</output>
+    
+                                <button id="stopANN" class="guiButton motionSTOP">Stop</button>
+    
+                            </div><!-- /annualMotionControl -->
+    
+                            <div class="motionSlider"><!-- headingMotionControl -->
+                                <label class="controlTextLarge">Heading:</label><!-- headingLabel -->
+    
+                                <label class="guiCheckbox">
+                                    <input type="checkbox" id="checkboxHEAD" class="checkboxMotion">
+                                    <span class="checkmark"></span>
+                                </label>
+    
+                                <div id="HEAD" class="v-slider motion-slider"></div>
+                                <output id="lblHEAD" class="controlText" for="HEADMotion">0</output>
+    
+                                <button id="stopHEAD" class="guiButton motionSTOP">Stop</button>
+    
+                            </div><!-- /headingMotionControl -->
+
+                            <div class="motionSlider"><!-- precessionMotionControl -->
+                                <label class="controlTextLarge">Precession:</label><!-- precessionLabel -->
+    
+                                <label class="guiCheckbox">
+                                    <input type="checkbox" id="checkboxPREC" class="checkboxMotion">
+                                    <span class="checkmark"></span>
+                                </label>
+    
+                                <div id="PREC" class="v-slider motion-slider"></div>
+                                <output id="lblPREC" class="controlText" for="PRECMotion">0</output>
+    
+                                <button id="stopPREC" class="guiButton motionSTOP">Stop</button>
+    
+                            </div><!-- /precessionMotionControl -->
+    
+                        </div><!-- /motionSliders -->
+    
+                    </div><!-- /motionsGroup -->
+
+                </div><!-- /starMachineMotionsTab  -->
+
+            </div><!-- /tab-06 -->
+
+
+            <div id="tab-07" class="tab-pane fade" role="tabpanel"><!-- tab-07 -->
+
+                <div id="herculesRemoteControlTab" class="tab-gui"><!-- herculesRemoteControlTab -->
+
+                    <div id="remoteCommands" class="col-4"><!-- remoteCommands -->
+                    
+                        <label class="labelText">Hercules Remote Commands</label><!-- remoteCommandsListLabel -->
+                        
+                        <div id="remoteCommandButtons">
+                            <button id="hercRemote00" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote01" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote02" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote03" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote04" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote05" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote06" class="guiButton eccsRemote"></button>
+                            <button id="hercRemote07" class="guiButton eccsRemote"></button>
+                        </div>
+                    
+                    </div><!-- /remoteCommands -->
+                    
+                    <div id="herculesShowListGroup" class="col-8"><!-- herculesShowListGroup -->
+                        
+                        <label class="labelText">Load Hercules Program</label><!-- herculesShowListLabel -->
+                        
+                        <div id="hercShowList"><!-- hercShowList -->
+                        
+                            <div class="showListGroup"><!-- showListColumn01 -->
+                                <button id="hercShow00" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow01" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow02" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow03" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow04" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow05" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow06" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow07" class="guiButton eccsLoadShow"></button>
+                            </div><!-- /showListColumn01 -->
+                            
+                            <div class="showListGroup"><!-- showListColumn02 -->
+                                <button id="hercShow08" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow09" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow10" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow11" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow12" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow13" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow14" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow15" class="guiButton eccsLoadShow"></button>
+                            </div><!-- /showListColumn02 -->
+                            
+                            <div class="showListGroup"><!-- showListColumn03 -->
+                                <button id="hercShow16" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow17" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow18" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow19" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow20" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow21" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow22" class="guiButton eccsLoadShow"></button>
+                                <button id="hercShow23" class="guiButton eccsLoadShow"></button>
+                            </div><!-- /showListColumn03 -->
+                        
+                        </div><!-- /hercShowList -->
+                    
+                    </div><!-- /herculesShowListGroup -->
+
+                </div><!-- /herculesRemoteControlTab -->
+
+            </div><!-- /tab-07 -->
+
+        </div><!-- /all-tabs -->
+
+    </div><!-- /mainContainer -->
+
+    <footer class="page-footer"><!-- Footer -->
+  
+        <div id="versionDate" class="footer-copyright"><!-- versionDate -->
+            Version Date: <label id="versionLabel"></label>
+        </div><!-- /versionDate -->
+  
+    </footer><!-- /Footer -->
+
+</body><!-- /body -->
+
+
+<!-- Get Preset Button and Cove Fade values prior to loading page. -->
+<script>onload=setVersionText();</script><!-- navBar -->
+<script>onload=setRGBCoveFadesButtonText();</script><!-- rgbCoveTab -->
+<script>onload=setPresetCoveFadesButtonText();</script><!-- rgbCoveTab -->
+<script>onload=setRGBStrobeFadeValues();</script><!-- rgbCoveTab -->
+<script>onload=setWhiteCoveFadesButtonText();</script><!-- whiteCoveTab -->
+<script>onload=setWhiteStrobeFadeValues();</script><!-- whiteCoveTab -->
+<script>onload=setFXQuickChaseButtonText();</script><!-- fx1QuickChaseTab -->
+<script>onload=setMotionCheckboxValues();</script><!-- starMachineMotionsTab  -->
+<script>onload=setHercCommandButtonText();</script></div><!-- herculesRemoteControlTab -->
+<script>onload=setHercShowButtonText();</script></div><!-- herculesRemoteControlTab -->
+
+
+</html><!-- /html -->
